@@ -8,14 +8,26 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { TruncatePipe } from './pipes/truncate-pipe';
+import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    TruncatePipe
+  ],
   entryComponents: [],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBiCdbK-BivQo4RqzqrxH8r09JOUOqJZU0' // TODO: remove api key from here
+    })
   ],
   providers: [
     StatusBar,

@@ -1,5 +1,7 @@
 {
   "name": "earthquake-app",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

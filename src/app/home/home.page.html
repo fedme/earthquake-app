@@ -1,9 +1,13 @@
 <ion-header>
-
   <ion-toolbar>
     <ion-title>Today's earthquakes</ion-title>
+    <ion-buttons slot="primary">
+        <ion-button fill="solid" color="secondary" (click)="toggleFilterBySignificance()">
+          <span *ngIf="!eqs.significantOnly; else allButton">Only show significant earthquakes</span>
+          <ng-template #allButton>Show all earthquakes</ng-template>
+        </ion-button>
+      </ion-buttons>
   </ion-toolbar>
-
 </ion-header>
 
 <ion-content>
@@ -11,7 +15,7 @@
   <agm-map [latitude]="defaultLatitude" [longitude]="defaultLongitude" 
         [zoom]="defaultZoom" [streetViewControl]="streetViewControl">
 
-    <agm-marker *ngFor="let e of eqs.earthquakes" (markerClick)="markerClicked(e)"
+    <agm-marker *ngFor="let e of eqs.shownEarthquakes" (markerClick)="markerClicked(e)"
       [latitude]="e?.coordinates?.latitude" [longitude]="e?.coordinates?.longitude">
     </agm-marker>
 

@@ -17,7 +17,7 @@ export class HomePage implements OnInit, OnDestroy {
   private readonly refreshInterval = 60000;
   defaultLatitude = 25.544693;
   defaultLongitude = -168.924479;
-  defaultZoom = 2.5;
+  defaultZoom = 2;
   streetViewControl = false;
 
   constructor(
@@ -51,6 +51,11 @@ export class HomePage implements OnInit, OnDestroy {
       componentProps: { earthquake }
     });
     return await modal.present();
+  }
+
+  toggleFilterBySignificance() {
+    this.eqs.significantOnly = !this.eqs.significantOnly;
+    this.eqs.refreshFilters();
   }
 
   ngOnDestroy() {

@@ -10,14 +10,26 @@ import { EarthquakeDetails } from '../models/earthquake-details';
 export class EarthquakeService {
 
   private readonly apiUrl = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0';
-  public earthquakes: Earthquake[] = [];
+  private allEarthquakes: Earthquake[] = [];
+  public shownEarthquakes: Earthquake[] = [];
+  public significantOnly = false;
+  public significanceThreshold = 350;
 
   constructor(private http: HttpClient) {
     this.updateEartquakesList();
   }
 
   public async updateEartquakesList() {
-    this.earthquakes = await this.getAllEartquakes();
+    this.allEarthquakes = await this.getAllEartquakes();
+    this.refreshFilters();
+  }
+
+  public refreshFilters(): void {
+    if (this.significantOnly) {
+      this.shownEarthquakes = this.shownEarthquakes.filter(e => e.sig >= this.significanceThreshold);
+    } else {
+      this.shownEarthquakes = this.allEarthquakes;
+    }
   }
 
   public async getAllEartquakes(): Promise<Earthquake[]> {

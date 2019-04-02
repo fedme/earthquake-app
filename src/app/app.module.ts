@@ -8,7 +8,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { TruncatePipe } from './pipes/truncate-pipe';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 
 import { AgmCoreModule } from '@agm/core';
@@ -17,8 +16,7 @@ import { EarthquakeDetailsPage } from './earthquake-details/earthquake-details.p
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TruncatePipe
+    AppComponent
   ],
   entryComponents: [
     EarthquakeDetailsPage

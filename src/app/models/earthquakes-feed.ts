@@ -1,4 +1,4 @@
-export class EarthquakeFeed {
+export class EarthquakesFeed {
 
     type: string;
     metadata: {

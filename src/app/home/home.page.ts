@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EarthquakeService } from '../services/earthquake.service';
+import { Earthquake } from '../models/earthquake';
+import { ModalController } from '@ionic/angular';
+import { EarthquakeDetailsPage } from '../earthquake-details/earthquake-details.page';
 
 @Component({
   selector: 'app-home',
@@ -8,16 +11,30 @@ import { EarthquakeService } from '../services/earthquake.service';
 })
 export class HomePage implements OnInit {
 
-  lat = 25.544693;
-  lng = -168.924479;
-  zoom = 2.5;
+  defaultLatitude = 25.544693;
+  defaultLongitude = -168.924479;
+  defaultZoom = 2.5;
   streetViewControl = false;
 
-  constructor(public eqs: EarthquakeService) {}
+  constructor(
+    public eqs: EarthquakeService,
+    private modalCtl: ModalController
+    ) { }
 
   ngOnInit() {
-    console.log(this.eqs.earthquakes);
     this.eqs.getAllEartquakes();
+  }
+
+  async markerClicked(earthquake: Earthquake) {
+
+    console.log('marker clicked');
+
+    // Create earthquake details modal
+    const modal = await this.modalCtl.create({
+      component: EarthquakeDetailsPage,
+      componentProps: { earthquake }
+    });
+    return await modal.present();
   }
 
 }

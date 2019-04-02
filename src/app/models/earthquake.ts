@@ -1,4 +1,5 @@
 import { Point } from './point';
+import { EarthquakeDetails } from './earthquake-details';
 
 export class Earthquake {
 
@@ -30,6 +31,11 @@ export class Earthquake {
     gap: number;
     magType: string;
     type: string;
+    details: EarthquakeDetails;
+
+    get magnitudeString() {
+        return `${this.mag} ${this.magType}`;
+    }
 
     constructor(obj?: any) {
         this.id = obj && obj.id || null;

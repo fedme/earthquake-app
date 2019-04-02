@@ -11,14 +11,11 @@
 
 <ion-content>
     
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [streetViewControl]="streetViewControl">
+  <agm-map [latitude]="defaultLatitude" [longitude]="defaultLongitude" 
+        [zoom]="defaultZoom" [streetViewControl]="streetViewControl">
 
-    <agm-marker *ngFor="let e of eqs.earthquakes" 
+    <agm-marker *ngFor="let e of eqs.earthquakes" (markerClick)="markerClicked(e)"
       [latitude]="e?.coordinates?.latitude" [longitude]="e?.coordinates?.longitude">
-
-      <agm-info-window>
-        {{e.title}}
-      </agm-info-window>
     </agm-marker>
 
   </agm-map>

@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{earthquake?.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h2>Details</h2>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label><strong>Place:</strong> {{earthquake?.place}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label><strong>Time:</strong> {{earthquake?.time | date:'medium'}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label><strong>Type:</strong> {{earthquake?.type}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label><strong>Magnitude:</strong> {{earthquake?.magnitudeString}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label><strong>Depth:</strong> {{earthquake?.coordinates?.depth}} km</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label><strong>Significance:</strong> {{earthquake?.sig}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label><strong>Status:</strong> {{earthquake?.status}}</ion-label>
+    </ion-item>
+
+  </ion-list>
+
+
+  <h2>Pictures</h2>
+
+  <p *ngIf="earthquake?.details?.ciimImg == null; else imgs">
+    There are no pictures attached to this eartquake.
+  </p>
+
+  <ng-template #imgs>
+    <img src="{{earthquake?.details?.ciimImg}}" alt="">
+    <img src="{{earthquake?.details?.ciimGeoImg}}" alt="">
+    <img src="{{earthquake?.details?.plotAttenImg}}" alt="">
+    <img src="{{earthquake?.details?.plotNumRespImg}}" alt="">
+  </ng-template>
+
+</ion-content>

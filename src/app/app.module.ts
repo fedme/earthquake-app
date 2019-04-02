@@ -12,21 +12,26 @@ import { TruncatePipe } from './pipes/truncate-pipe';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 
 import { AgmCoreModule } from '@agm/core';
+import { EarthquakeDetailsPageModule } from './earthquake-details/earthquake-details.module';
+import { EarthquakeDetailsPage } from './earthquake-details/earthquake-details.page';
 
 @NgModule({
   declarations: [
     AppComponent,
     TruncatePipe
   ],
-  entryComponents: [],
+  entryComponents: [
+    EarthquakeDetailsPage
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
     HttpClientJsonpModule,
     IonicModule.forRoot(),
+    EarthquakeDetailsPageModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBiCdbK-BivQo4RqzqrxH8r09JOUOqJZU0' // TODO: remove api key from here
+      apiKey: 'AIzaSyBiCdbK-BivQo4RqzqrxH8r09JOUOqJZU0' // TODO: remove api key
     })
   ],
   providers: [

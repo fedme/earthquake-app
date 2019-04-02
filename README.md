@@ -12,3 +12,7 @@ To serve the app in the browser you can run the following command:
 ```
 ionic serve
 ```
+
+## TODO
+- Clustering
+- Filtering

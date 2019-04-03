@@ -29,7 +29,7 @@ import { EarthquakeDetailsPage } from './earthquake-details/earthquake-details.p
     EarthquakeDetailsPageModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBiCdbK-BivQo4RqzqrxH8r09JOUOqJZU0' // TODO: remove api key
+      apiKey: '' // TODO: Add your Google Maps JS API Key here
     })
   ],
   providers: [
